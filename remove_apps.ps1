@@ -65,3 +65,5 @@ foreach ($app in $apps) {
             Remove-AppxProvisionedPackage -Online
     }
 }
+
+get-appxpackage -allusers *xbox* | remove-appxpackage
