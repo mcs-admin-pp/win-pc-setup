@@ -63,12 +63,8 @@ $apps = @(
 )
 
 foreach ($app in $apps) {
-    $package = Get-AppxPackage -Name *$app* -AllUsers -ErrorAction SilentlyContinue
-    if ($package) { 
-        Remove-AppxPackage -Package $package.PackageFullName
-        Get-AppXProvisionedPackage -Online | where DisplayName -EQ $app |`
-            Remove-AppxProvisionedPackage -Online
-    }
-    }
+    get-appxpackage -AllUsers -ErrorAction SilentlyContinue *$app* | remove-appxpackage
+    
+}
     
 
