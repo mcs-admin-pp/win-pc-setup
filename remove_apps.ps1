@@ -19,6 +19,7 @@ $apps = @(
             "cortana"        # Cortana used to be Non-Removable but is removable on some version of Windows
             "Microsoft.549981C3F5F10" 
             "Cortana" # Alias for cortana on some version of Windows
+            "help"
             "tiktok"
             "twitter"
             "instagram"
