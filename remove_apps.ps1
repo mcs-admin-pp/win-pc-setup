@@ -29,6 +29,7 @@ $apps = @(
             "spotify"
             "hulu"
             "photoshop"
+            "clipchamp"
             "picsart"
             "Facebook"
             "phone"          # Phone and Phone Companion apps together
