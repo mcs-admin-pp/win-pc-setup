@@ -91,7 +91,7 @@ $apps = @(
             "sway"           # Sway
             "oneconnect"     # Paid Wi-Fi & Cellular
             "cortana"        # Cortana used to be Non-Removable but is removable on some version of Windows
-            "Microsoft.549981C3F5F10" 
+            "Microsoft.549981C3F5F10"
             "Cortana" # Alias for cortana on some version of Windows
             "Help"
             "tiktok"
@@ -103,6 +103,7 @@ $apps = @(
             "spotify"
             "hulu"
             "photoshop"
+            "Clipchamp.Clipchamp"
             "picsart"
             "Facebook"
             "phone"          # Phone and Phone Companion apps together
@@ -111,6 +112,7 @@ $apps = @(
             "xbox"           # All Xbox Apps
             "xboxapp"
             "XBox"
+            "Microsoft.XboxGamingOverlay"
             "GamingApp"
             #"communicationsapps"  # Calendar and Mail apps together
             "todos"
@@ -145,6 +147,13 @@ foreach ($app in $apps) {
             Remove-AppxProvisionedPackage -Online
     }
 }
+
+    
+    
+
+    
+
+
 
     
     
