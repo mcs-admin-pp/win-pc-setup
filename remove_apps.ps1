@@ -37,7 +37,7 @@ $apps = @(
             "xbox"           # All Xbox Apps
             "xboxapp"
             "XBox"
-            "XboxGamingOverlay"
+            "Microsoft.XboxGamingOverlay"
             "GamingApp"
             #"communicationsapps"  # Calendar and Mail apps together
             "todos"
