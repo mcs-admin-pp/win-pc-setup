@@ -69,4 +69,6 @@ foreach ($app in $apps) {
         Get-AppXProvisionedPackage -Online | where DisplayName -EQ $app |`
             Remove-AppxProvisionedPackage -Online
     }
+    }
+    
 
