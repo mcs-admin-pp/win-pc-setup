@@ -36,6 +36,7 @@ $apps = @(
             "Feedback Hub" # Feedback Hub
             "xbox"           # All Xbox Apps
             "xboxapp"
+            "XBox"
             #"communicationsapps"  # Calendar and Mail apps together
             "todos"
             "maps"           # Maps
