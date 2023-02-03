@@ -72,65 +72,82 @@ $RegValue = "SYSTEM "+ $env:COMPUTERNAME
     Set-ItemProperty $RegPath $RegKey -Value $RegValue -Type String -Force
     
     
-Write-Output "Starting with Windows Apps removal"
+Write-Host "Uninstalling default apps"
+$apps = @(
+            "CandyCrushSaga" 
+            "CandyCrush" # CandyCrushSaga
+            "wallet" 
+            "Microsoft Pay"  # Microsoft Wallet (Microsoft Pay)
+            "skypeapp"       # App Get Skype
+            "officehub"      # App Get Office
+            "getstarted"     # Get Started or Tips
+            "solitaire"      # Microsoft Solitaire Collection
+             #"bing"           # Money, News, Sports and Weather apps together
+            "bingfinance"    # Money
+             #"bingweather"    # Weather
+            "bingnews"       # News
+            "bingsports"     # Sports
+            "onenote"        # OneNote
+            "sway"           # Sway
+            "oneconnect"     # Paid Wi-Fi & Cellular
+            "cortana"        # Cortana used to be Non-Removable but is removable on some version of Windows
+            "Microsoft.549981C3F5F10" 
+            "Cortana" # Alias for cortana on some version of Windows
+            "Help"
+            "tiktok"
+            "twitter"
+            "instagram"
+            "BubbleWitchSaga"
+            "MarchOfEmpires"
+            "Disney"
+            "spotify"
+            "hulu"
+            "photoshop"
+            "picsart"
+            "Facebook"
+            "phone"          # Phone and Phone Companion apps together
+            "feedback" 
+            "Feedback Hub" # Feedback Hub
+            "xbox"           # All Xbox Apps
+            "xboxapp"
+            "XBox"
+            "GamingApp"
+            #"communicationsapps"  # Calendar and Mail apps together
+            "todos"
+            "maps"           # Maps
+            "messaging"      # Messaging and Skype Video apps together
+            #"onedrive"       # OneDrive Connect
+            "connectivitystore"  # Microsoft Wi-Fi
+            "mspaint"        # Paint 3D
+            "people"         # People
+            "sticky"         # Sticky Notes
+            "3dbuilder"      # 3D Builder
+            "3d"             # View 3D
+            "soundrecorder"  # Voice Recorder
+            "holographic"    # Windows Holographic
+            "mixedReality"
+            "Mixed Reality Portal" 
+            "Dolby"
+            "Teams"
+            "zune"           # Groove Music and Movies & TV apps together
+            "zunemusic"      # Groove Music
+            "zunevideo"      # Movies & TV
+            
 
-RemoveSoftware "CandyCrushSaga" "CandyCrush" # CandyCrushSaga
-RemoveSoftware "wallet" "Microsoft Pay"  # Microsoft Wallet (Microsoft Pay)
-RemoveSoftware "skypeapp"       # App Get Skype
-RemoveSoftware "officehub"      # App Get Office
-RemoveSoftware "getstarted"     # Get Started or Tips
-RemoveSoftware "solitaire"      # Microsoft Solitaire Collection
-RemoveSoftware "bing"           # Money, News, Sports and Weather apps together
-###  Single bing softwares (Skipped if bing is selected above) ###
-RemoveSoftware "bingfinance"    # Money
-RemoveSoftware "bingweather"    # Weather
-RemoveSoftware "bingnews"       # News
-RemoveSoftware "bingsports"     # Sports
-## 
-RemoveSoftware "onenote"        # OneNote
-RemoveSoftware "sway"           # Sway
-RemoveSoftware "oneconnect"     # Paid Wi-Fi & Cellular
-RemoveSoftware "cortana"        # Cortana used to be Non-Removable but is removable on some version of Windows
-RemoveSoftware "Microsoft.549981C3F5F10" "Cortana" # Alias for cortana on some version of Windows
-# Windows 11 most preinstalled apps
-RemoveSoftware "tiktok"
-RemoveSoftware "twitter"
-RemoveSoftware "instagram"
-RemoveSoftware "BubbleWitchSaga"
-RemoveSoftware "MarchOfEmpires"
-RemoveSoftware "Disney"
-RemoveSoftware "spotify"
-RemoveSoftware "hulu"
-RemoveSoftware "photoshop"
-RemoveSoftware "picsart"
-RemoveSoftware "Facebook"
+)
+foreach ($app in $apps) {
+    #Simple Version     
+    #get-appxpackage -AllUsers -ErrorAction SilentlyContinue *$app* | remove-appxpackage
+    $package = Get-AppxPackage -Name *$app* -AllUsers -ErrorAction SilentlyContinue
+    if ($package) { 
+        Remove-AppxPackage -Package $package.PackageFullName
+        Get-AppXProvisionedPackage -Online | where DisplayName -EQ $app |`
+            Remove-AppxProvisionedPackage -Online
+    }
+}
 
-### RECOMMENDED FOR REMOVAL ###
-promptContinue("Continue with Software recommended for removal ?")
+    
+    
 
-RemoveSoftware "phone"          # Phone and Phone Companion apps together
-RemoveSoftware "feedback" "Feedback Hub" # Feedback Hub:
-RemoveSoftware "xbox"           # All Xbox Apps
-RemoveSoftware "communicationsapps"  # Calendar and Mail apps together
-RemoveSoftware "todos"
-RemoveSoftware "maps"           # Maps
-RemoveSoftware "messaging"      # Messaging and Skype Video apps together
-RemoveSoftware "onedrive"       # OneDrive Connect
-RemoveSoftware "connectivitystore"  # Microsoft Wi-Fi
-RemoveSoftware "mspaint"        # Paint 3D
-RemoveSoftware "people"         # People
-RemoveSoftware "sticky"         # Sticky Notes
-RemoveSoftware "3dbuilder"      # 3D Builder
-RemoveSoftware "3d"             # View 3D
-RemoveSoftware "soundrecorder"  # Voice Recorder
-RemoveSoftware "holographic"    # Windows Holographic
-RemoveSoftware "mixedReality" "Mixed Reality Portal" 
-RemoveSoftware "Dolby"
-RemoveSoftware "Teams"
+    
 
-# Dell Laptop Specific
-RemoveSoftware "partnerpromo"  "Dell PromoApp"
-RemoveSoftware "dell*connect"  "Dell Connect Apps"
-RemoveSoftware "dellCustomer"  "Dell Customer Connect"
-RemoveSoftware "dellMobile"    "Dell Mobile Connect"
-RemoveSoftware "myDell"        "My Dell"
