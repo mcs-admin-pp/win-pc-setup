@@ -19,7 +19,7 @@ $apps = @(
             "cortana"        # Cortana used to be Non-Removable but is removable on some version of Windows
             "Microsoft.549981C3F5F10" 
             "Cortana" # Alias for cortana on some version of Windows
-            "help"
+            "Help"
             "tiktok"
             "twitter"
             "instagram"
@@ -35,6 +35,7 @@ $apps = @(
             "feedback" 
             "Feedback Hub" # Feedback Hub
             "xbox"           # All Xbox Apps
+            "xboxapp"
             #"communicationsapps"  # Calendar and Mail apps together
             "todos"
             "maps"           # Maps
@@ -55,6 +56,7 @@ $apps = @(
             "zune"           # Groove Music and Movies & TV apps together
             "zunemusic"      # Groove Music
             "zunevideo"      # Movies & TV
+            
 
 )
 
