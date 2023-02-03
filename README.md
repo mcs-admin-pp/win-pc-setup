@@ -12,3 +12,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression((New-Object 
 ```
 
 It downloads the setup script and executes it.
+
+
+Remove default Apps:
+```console
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/mcs-admin-pp/win-pc-setup/main/remove_apps.ps1'))
+```
