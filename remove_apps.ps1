@@ -17,7 +17,8 @@ $apps = @(
             "sway"           # Sway
             "oneconnect"     # Paid Wi-Fi & Cellular
             "cortana"        # Cortana used to be Non-Removable but is removable on some version of Windows
-            "Microsoft.549981C3F5F10" 
+            "Microsoft.549981C3F5F10"
+            "MicrosoftWindows.Client.CBS" 
             "Cortana" # Alias for cortana on some version of Windows
             "Help"
             "tiktok"
