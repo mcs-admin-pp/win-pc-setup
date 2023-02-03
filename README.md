@@ -2,7 +2,7 @@
 Default Windows PC Setup
 
 
-When executed, the script  installs `chocolatey` on the local machine and then installs all applications and customizations defined in the `setup1.ps1` script file.
+When executed, the script  installs `chocolatey` on the local machine and then installs all applications and customizations defined in the `setup.ps1` script file.
 
 ## Install applications and customizations:
 In order to run, open a Powershell instance in admin mode (Run as Administrator) and execute:
