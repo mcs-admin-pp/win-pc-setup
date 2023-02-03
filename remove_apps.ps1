@@ -37,6 +37,7 @@ $apps = @(
             "xbox"           # All Xbox Apps
             "xboxapp"
             "XBox"
+            "GamingApp"
             #"communicationsapps"  # Calendar and Mail apps together
             "todos"
             "maps"           # Maps
@@ -62,7 +63,10 @@ $apps = @(
 )
 
 foreach ($app in $apps) {
-    get-appxpackage -AllUsers -ErrorAction SilentlyContinue *$app* | remove-appxpackage
-    
-}
+    $package = Get-AppxPackage -Name *$app* -AllUsers -ErrorAction SilentlyContinue
+    if ($package) { 
+        Remove-AppxPackage -Package $package.PackageFullName
+        Get-AppXProvisionedPackage -Online | where DisplayName -EQ $app |`
+            Remove-AppxProvisionedPackage -Online
+    }
 
