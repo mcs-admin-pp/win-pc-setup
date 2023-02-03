@@ -39,13 +39,17 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Search -N
 Write-Output "Set File Explorer to open This PC`n"
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Value 1 -Type Dword -Force
 
+# Restore Win 10 Context Menue
+Write-Output "Restore Win 10 Context Menue`n"
+reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+
 # Show File Extensions
 Write-Output "Show File Extensions`n"
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name HideFileExt -Value 0 -Type Dword -Force
 
 # Show All Folder in Navigation Panel
-Write-Output "Show All Folder in Navigation Panel`n"
-Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneShowAllFolders -Value 1 -Type Dword -Force
+#Write-Output "Show All Folder in Navigation Panel`n"
+#Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneShowAllFolders -Value 1 -Type Dword -Force
 
 # Rename This PC Shortcut
 Write-Output "Rename This PC Shortcut`n"
